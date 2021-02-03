@@ -35,7 +35,7 @@ function preload() {
   
    restartImage = loadImage("restart.png");
 
-   bg = loadImage("bg.png")
+   bg = loadImage("bg5.jpg")
   
    jump = loadSound("jump.mp3");
   
@@ -62,6 +62,7 @@ function setup() {
   ground.addImage("ground",groundImage);
   ground.x = ground.width /2;
   ground.x = camera.x;
+  ground.visible = false;
  
   
   invisibleGround = createSprite(300,640,600,5);
@@ -93,8 +94,8 @@ function draw() {
       if(score%100==0 && score>0 ){
         checkpoint.play();
       }
-    if (keyDown("space") && trex.y>=559) {
-      trex.velocityY = -10;
+    if (keyDown("space") && trex.y>=600) {
+      trex.velocityY = -14 ;
       jump.play();
     }
   trex.velocityY = trex.velocityY + 0.7
@@ -125,11 +126,12 @@ function draw() {
   }
   
   trex.collide(invisibleGround);
+  //console.log(trex.y);
   
   drawSprites();
 }
 
-f
+
 function spawnObstacles(){
   if(frameCount%60 ==0){
     var obstacle = createSprite(600,645,10,40);
